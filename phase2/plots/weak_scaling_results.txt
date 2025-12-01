@@ -1,0 +1,7 @@
+Weak Scaling Test
+Problem size increases with number of processes
+-------------------------------------
+1 3.981570796
+2 7.432831172
+4 27.121428877
+8 93.470648251
