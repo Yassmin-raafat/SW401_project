@@ -1,13 +1,41 @@
-# Ignore large input test files (generated automatically)
+cat > .gitignore << 'EOF'
+# Ignore Phase 2 large input files
 phase2/data/input_25MB.txt
 phase2/data/input_50MB.txt
 phase2/data/input_100MB.txt
 phase2/data/input_200MB.txt
-data/very_huge_input.txt
 
-# Ignore all text inputs EXCEPT the small one
+# Ignore any very large text inputs
+**/very_huge_input.txt
+
+# Ignore all txt files (to avoid uploading huge inputs)
 *.txt
+
+# BUT keep the small input file needed by the project
 !phase2/data/input.txt
 !data/input.txt
 
-# Ignore compiled
+# Ignore compiled binaries
+*.out
+*.exe
+*.o
+*.a
+*.so
+*.class
+*.pyc
+
+# Ignore MPI compiled binaries
+phase2/src/wc_mpi
+phase2/src/bandwidth_test
+phase2/src/latency_test
+
+phase2/wc_mpi
+phase2/bandwidth_test
+phase2/latency_test
+
+# Logs
+*.log
+
+# VSCode settings
+.vscode/
+EOF
