@@ -1,1 +1,13 @@
+# Ignore large input test files (generated automatically)
+phase2/data/input_25MB.txt
+phase2/data/input_50MB.txt
+phase2/data/input_100MB.txt
+phase2/data/input_200MB.txt
 data/very_huge_input.txt
+
+# Ignore all text inputs EXCEPT the small one
+*.txt
+!phase2/data/input.txt
+!data/input.txt
+
+# Ignore compiled
