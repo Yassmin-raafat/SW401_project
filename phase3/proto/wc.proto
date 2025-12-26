@@ -1,0 +1,17 @@
+syntax = "proto3";
+
+package wc;
+
+service WordCountService {
+  rpc CountWords (CountRequest) returns (CountReply);
+}
+
+message CountRequest {
+  string text = 1;
+  string request_id = 2;
+}
+
+message CountReply {
+  int64 word_count = 1;
+  string server_id = 2;
+}

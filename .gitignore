@@ -39,3 +39,27 @@ phase2/latency_test
 # VSCode settings
 .vscode/
 EOF
+mpic++ wc_mpi.cpp -o wc_mpi
+mpirun --allow-run-as-root -np 2 ./wc_mpi ../data/input.txt
+mpic++ latency_test.cpp -o latency_test
+mpirun --allow-run-as-root -np 2 ./latency_test
+mpic++ bandwidth_test.cpp -o bandwidth_test
+mpirun --allow-run-as-root -np 2 ./bandwidth_test
+# Python / venv
+.venv/
+venv/
+__pycache__/
+*.pyc
+
+# Logs / outputs
+phase3/logs/
+*.log
+
+# Spark checkpoints (لو عندك)
+checkpoint/
+**/checkpoint/
+
+# OS / IDE
+.DS_Store
+.vscode/
+.idea/
