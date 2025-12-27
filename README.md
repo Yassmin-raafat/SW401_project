@@ -167,7 +167,69 @@ Sequential:
 g++ wc_seq.cpp -O2 -o wc_seq
 ./wc_seq ../data/very_huge_input.txt
 
+
 Parallel:
 g++ wc_parallel.cpp -fopenmp -O2 -o wc_parallel
 export OMP_NUM_THREADS=4
 ./wc_parallel ../data/very_huge_input.txt
+
+=======================================================================================
+
+### phase 3 running
+Replica 1
+
+cd ~/SW401_project/SW401_project
+source .venv/bin/activate
+
+export REPLICA_ID=replica-1
+export PORT=50051
+export LOG_FILE=phase3/logs/replica-1.log
+
+python phase3/server/server.py
+
+
+-------------------------------------------------------------
+
+Replica 2
+
+cd ~/SW401_project/SW401_project
+source .venv/bin/activate
+
+export REPLICA_ID=replica-2
+export PORT=50052
+export LOG_FILE=phase3/logs/replica-2.log
+
+python phase3/server/server.py
+----------------------------------------------------
+
+Spark Streaming Client
+
+
+cd ~/SW401_project/SW401_project
+source .venv/bin/activate
+
+python phase3/streaming/spark_stream_client.py
+--------------------------------------------------------------------
+Recovery
+
+
+export REPLICA_ID=replica-2
+export PORT=50052
+export LOG_FILE=phase3/logs/replica-2.log
+python phase3/server/server.py
+
+---------------------------------------------------------
+
+
+
+Logs
+
+
+cd ~/SW401_project/SW401_project
+cat phase3/logs/replica-1.log
+
+
+cat phase3/logs/replica-2.log
+--------------------------------------------------------
+
+
